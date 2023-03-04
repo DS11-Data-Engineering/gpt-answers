@@ -2,8 +2,6 @@ from flask import Flask, render_template, request
 import pymysql
 import openai
 import os
-from dotenv import load_dotenv
-load_dotenv()
 
 # Openai key
 openai.api_key = os.getenv('OPENAI_KEY')
@@ -82,4 +80,4 @@ def list_answers():
     cursor.close()
     return render_template('list.html', rows=rows)
 
-app.run()
+app.run(host='0.0.0.0')

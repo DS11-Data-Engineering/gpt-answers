@@ -5,14 +5,14 @@ import os
 from dotenv import load_dotenv
 load_dotenv()
 
-# Openai
+# Openai key
 openai.api_key = os.getenv('OPENAI_KEY')
 
 # Flask
 app = Flask(__name__, static_folder='templates')
 app.config['DEBUG'] = True
 
-# MySQL
+# MySQL keys(AWS)
 username = os.getenv('DB_USERNAME')
 password = os.getenv('DB_PASSWORD')
 host = os.getenv('DB_HOST')
@@ -20,6 +20,7 @@ port = os.getenv('DB_PORT')
 
 conversations = []
 
+# To connect with the Cloud DDBB
 def db_connection():
     cursor = pymysql.connect(
         host=host,
@@ -32,8 +33,16 @@ def db_connection():
 
     return cursor
 
+
 @app.route('/', methods=['GET', 'POST'])
 def home():
+    """
+    Basic function where the user asks something and returns the answer from ChatGPT. It will also save it in the Cloud DDBB, in this case, AWS.
+
+    Parameters 
+    ----------
+    Type in the interface what you want to ask and it will return the answer.
+    """
     if request.method == 'GET':
         return render_template('index.html')
     if request.form['question']:
@@ -63,9 +72,14 @@ def home():
 
 @app.route('/list', methods=['GET'])
 def list_answers():
+    """
+    Function that returns the DDBB classified in questions and answers.
+    No Parameters needed, just the endpoint.
+    """
     cursor = db_connection()
     cursor.execute('''SELECT * FROM answers''')
     rows = cursor.fetchall()
     cursor.close()
     return render_template('list.html', rows=rows)
+
 app.run()

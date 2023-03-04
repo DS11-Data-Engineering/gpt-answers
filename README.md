@@ -24,7 +24,7 @@ To start with our application, you will need a few things first.
 First of all, you will need an API key from OpenAI. You can get it from [OpenAI](https://openai.com/product).
 After that, you could also save your questions and answers in a Cloud based database such as AWS. If you want that, you will also need to register in [AWS](https://aws.amazon.com/)
 Once you register, you need to create a database in RDS and there, you will get a username, a chosen password, the BBDD host and port.
-We eased it up so the user can enter all those keys in the sample.env file and our app will get the keys from there.  
+We eased it up so the user can enter all those keys in a .env file(You can find a template in sample.env) and our app will get the keys from there.  
 
 And one last thing will be the use of Docker (in case you want a virtual environment). We also provide with a Docker file so you can launch our app there. The steps are quite simple. First, you will need to get the file.
 ```

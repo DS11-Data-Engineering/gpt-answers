@@ -1,7 +1,9 @@
 # ChatGPT API
 
 ## An API to connect with ChatGPT
-[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-TheBridge-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](https://www.thebridge.tech/) ![Powered by NumFOCUS](https://img.shields.io/badge/Contributors-13-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)  
+
+![answers](/media/answer.jpg)
+[![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-TheBridge-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](https://www.thebridge.tech/) ![Powered by NumFOCUS](https://img.shields.io/badge/Contributors-4-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)  
 
 ### Table of Contents  
 [Intro](#Intro)  

@@ -31,8 +31,31 @@ And one last thing will be the use of Docker (in case you want a virtual environ
 docker pull 3moya/gpt3-answers
 ```
 And after that, with the Docker Desktop app running, you will need to enter the following command.
+
+PowerShell:
+```sh
+docker run -d -t `
+    --name gpt-answers `
+    -p 5000:5000 `
+    -e "OPENAI_KEY=<openai-key>" `
+    -e "DB_USERNAME=<db-username>" `
+    -e "DB_PASSWORD=<db-password>" `
+    -e "DB_HOST=<db-host>" `
+    -e "DB_PORT=<db-port>" `
+    3moya/gpt-answers
 ```
-docker run --name gpt3-answers -p 5000:5000 -t 3moya/gpt3-answers
+
+Bash:
+```sh
+docker run -d -t \
+    --name gpt-answers \
+    -p 5000:5000 \
+    -e "OPENAI_KEY=<openai-key>" \
+    -e "DB_USERNAME=<db-username>" \
+    -e "DB_PASSWORD=<db-password>" \
+    -e "DB_HOST=<db-host>" \
+    -e "DB_PORT=<db-port>" \
+    3moya/gpt-answers
 ```
 ### Usage
 -------------

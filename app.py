@@ -60,4 +60,12 @@ def home():
     else:
         return render_template('index.html')
 
+
+@app.route('/list', methods=['GET'])
+def list_answers():
+    cursor = db_connection()
+    cursor.execute('''SELECT * FROM answers''')
+    rows = cursor.fetchall()
+    cursor.close()
+    return rows #hacerlo más bonito como en html?
 app.run()

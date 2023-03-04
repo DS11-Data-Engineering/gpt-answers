@@ -67,5 +67,5 @@ def list_answers():
     cursor.execute('''SELECT * FROM answers''')
     rows = cursor.fetchall()
     cursor.close()
-    return rows #hacerlo más bonito como en html?
+    return render_template('list.html', rows=rows)
 app.run()

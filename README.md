@@ -2,7 +2,8 @@
 
 ## An API to connect with ChatGPT
 
-![answers](/media/answer.jpg)
+![answers](/media/answer.jpg)  
+
 [![Powered by NumFOCUS](https://img.shields.io/badge/powered%20by-TheBridge-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)](https://www.thebridge.tech/) ![Powered by NumFOCUS](https://img.shields.io/badge/Contributors-4-orange.svg?style=flat&colorA=E1523D&colorB=007D8A)  
 
 ### Table of Contents  
@@ -40,7 +41,7 @@ The functionality of our app is similar to ChatGPT. You can type anything you wa
 ### Future Improvements
 -------------
 - Improve the interface.
-- Add a functionality that 
+- Add a functionality that integrates XXX
 - Integration in a web environment(ex. Pythonanywhere)
 
 ### Collaborators

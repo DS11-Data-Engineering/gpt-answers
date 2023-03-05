@@ -23,8 +23,8 @@ RUN chown -R gpt-answers:gpt-answers /app
 # Set the user to run the application as gpt-answers
 USER gpt-answers
 
-# Start the application using Gunicorn and bind it to port 5000
-CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+# Start the application using the command "python app.py"
+CMD ["python", "app.py"]
 
 # Expose port 5000 to allow external connections to the container
 EXPOSE 5000

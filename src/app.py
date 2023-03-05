@@ -2,8 +2,7 @@ from flask import Flask, render_template, request
 from utils import db, openai
 
 # Flask
-app = Flask(__name__, static_folder='templates')
-app.config['DEBUG'] = True
+app = Flask(__name__)
 
 conversations = []
 
@@ -42,4 +41,7 @@ def list_answers():
     
     return render_template('list.html', rows=rows)
 
-app.run(host='0.0.0.0')
+if __name__ == '__main__':
+    app.run(
+        host='0.0.0.0',
+        debug=True)

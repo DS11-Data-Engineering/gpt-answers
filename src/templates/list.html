@@ -36,11 +36,13 @@
     <h1>Answers List</h1>
     <table>
         <tr>
+            <th>Date</th>
             <th>Question</th>
             <th>Answer</th>
         </tr>
         {% for row in rows %}
         <tr>
+            <td>{{ row.date }}</td>
             <td>{{ row.question }}</td>
             <td>{{ row.answer }}</td>
         </tr>

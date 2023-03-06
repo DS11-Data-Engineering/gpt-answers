@@ -12,9 +12,40 @@ Docker proved to be a little bit more difficult since it had some compatibility 
 In the final day, we focused on refining our Github and adding a proper memory and readme files.
 We will explain in detail what we did in every section of this document.
 
-# html
+# Flask
+In this application, there are two endpoints that can be accessed through HTTP requests.
+
+The first endpoint is defined with the `@app.route('/')` decorator, wich maps the URL "/" to the `home()` function. This endpoint accepts both GET and POST requests, which can be used to retrieve the home page and interact with the chatbot, respectively.
+
+The second endpoint is defined with the `@app.route('/list')` decorator, wich maps the URL "/list" to the `list_answers()` function. This endpoint accepts only GET requests and returns a list of all the questions and answers stored in the AWS database.
+
+The `render_template()` function is used to render HTML templates that can be returned as a response to HTTP requests.
+
+Flask's built-in development server is used for running the application during the development phase. However, it's not recommended to use the development server for production purposes because it's not optimized for performance, security, and reliability. Instead, we used a production-ready server like Gunicorn.
+
+<p align="center">
+  <img src="media/flask_dev_server.png" alt="Flask Development Server" width="800">
+</p>
+
+One of the main differences between Flask's built-in server and Gunicorn is that the former is single-threaded, wich means it can only handle one request at a time. In contrast, Gunicorn can spawn multiple worker processes to handle requests concurrently, wich significantly improves the application's performance.
+
+<p align="center">
+  <img src="media/gunicorn_server.png" alt="Gunicorn Production Server" width="500">
+</p>
+
+# HTML
 We started the project trying to make an interface similar to ChatGPT, that's why our main interface resembles their main page. Most of our team had little knowledge of html so we imported simple templates that gave us a decent look while giving us the flexibility to adapt our code to it.
 The second html (list) was an added functionality in the last moment but it was simple enough to implement it on time. It's a simple display of all of our logs stored in our database.
+
+<p align="center">
+  <img src="media/answer_list.png" alt="Answer List" width="500">
+</p>
+
+The messaging system was updated through the integration of the Jinja template system. Through iterative loops, all relevant elements were properly displayed on the web page with the necessary HTML syntax.
+
+<p align="center">
+  <img src="media/web.png" alt="Web" width="500">
+</p>
 
 # Database
 To create the database in AWS, we simply followed the steps in the class guide. The section in AWS to create a DDBB is RDS. There, the user can create a database clicking in the big orange button with just a few adjustments in the parameters. 
@@ -29,9 +60,6 @@ After waiting a few minutes to let the service create our database, we will need
 ![IPv4](/media/ipv4.png)  
 Once we have it running, we need to create a table to store our prompts. We decided to use dates as our index and primary keys, and all questions and answers as TEXT.
 After that, we are all set up to use our DDBB.
-
-# Flask
-
 
 # OpenAI
 The main logic was developed by OpenAI and we only accessed through their [API](https://openai.com/product). After login in, any user can get their own private key to use (make sure you copy it in a safe place). 
@@ -50,9 +78,29 @@ The main function in openai.py is the one we use to create the connection betwee
 
 - There are two different Dockerfiles: one for production (`Dockerfile`) and another for development purposes (`Dockerfile_dev`). Both use different servers, with the production image using the built-in Flask development server and the production image using Gunicorn, a more suitable HTTP server for a production environment.
 
+```Dockerfile
+# PRODUCTION
+# Start the application using Gunicorn and bind it to port 5000
+CMD ["gunicorn", "--bind", "0.0.0.0:5000", "app:app"]
+```
+
+```Dockerfile
+# DEVELOPMENT
+# Start the application using the command "python app.py"
+CMD ["python", "app.py"]
+```
+
 - Dockerfile commands have been ordered from least to most frequently changed to take advantage of caching and rebuild the images faster.
 
+<p align="center">
+  <img src="media/cache_docker.png" alt="Docker cached build output" width="500">
+</div>
+
 - Both images have been scanned with the command `docker scout cves`, and every vulnerability has been fixed by updating vulnerable packages to a safe version.
+
+<p align="center">
+  <img src="media/docker_scout.png" alt="Docker scout cves output" width="500">
+</p>
 
 Once all Dockerfile parameters and commands have been established, the following commands are executed:
 

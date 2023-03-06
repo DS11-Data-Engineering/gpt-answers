@@ -46,7 +46,6 @@ docker run -d -t `
     -e "DB_USERNAME=<db-username>" `
     -e "DB_PASSWORD=<db-password>" `
     -e "DB_HOST=<db-host>" `
-    -e "DB_PORT=<db-port>" `
     3moya/gpt-answers
 ```
 
@@ -59,7 +58,6 @@ docker run -d -t \
     -e "DB_USERNAME=<db-username>" \
     -e "DB_PASSWORD=<db-password>" \
     -e "DB_HOST=<db-host>" \
-    -e "DB_PORT=<db-port>" \
     3moya/gpt-answers
 ```
 ### Usage

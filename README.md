@@ -42,10 +42,10 @@ PowerShell:
 docker run -d -t `
     --name gpt-answers `
     -p 5000:5000 `
-    -e "OPENAI_KEY=<openai-key>" `
-    -e "DB_USERNAME=<db-username>" `
-    -e "DB_PASSWORD=<db-password>" `
-    -e "DB_HOST=<db-host>" `
+    -e OPENAI_KEY=<openai-key> `
+    -e DB_USERNAME=<db-username> `
+    -e DB_PASSWORD=<db-password> `
+    -e DB_HOST=<db-host> `
     3moya/gpt-answers
 ```
 
@@ -54,10 +54,10 @@ Bash:
 docker run -d -t \
     --name gpt-answers \
     -p 5000:5000 \
-    -e "OPENAI_KEY=<openai-key>" \
-    -e "DB_USERNAME=<db-username>" \
-    -e "DB_PASSWORD=<db-password>" \
-    -e "DB_HOST=<db-host>" \
+    -e OPENAI_KEY=<openai-key> \
+    -e DB_USERNAME=<db-username> \
+    -e DB_PASSWORD=<db-password> \
+    -e DB_HOST=<db-host> \
     3moya/gpt-answers
 ```
 ### Usage

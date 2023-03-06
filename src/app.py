@@ -4,7 +4,7 @@ from utils import db, openai
 # Flask
 app = Flask(__name__)
 
-conversations = []
+chat = []
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
@@ -18,15 +18,15 @@ def home():
     if request.method == 'GET':
         return render_template('index.html')
     if request.form['question']:
-        question = request.form['question'] + ''
-        conversations.append(question)
+        question = request.form['question']
+        chat.append(question)
 
-        answer = openai.get_answer(question)
-        conversations.append(answer)
+        answer = openai.get_answer(question=question, context=chat)
+        chat.append(answer)
 
         db.insert_answer(question, answer)
 
-        return render_template('index.html', chat=conversations)
+        return render_template('index.html', chat=chat)
     else:
         return render_template('index.html')
 

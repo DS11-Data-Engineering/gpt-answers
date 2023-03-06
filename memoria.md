@@ -1,5 +1,16 @@
 # html
+# Database
+To create the database in AWS, we simply followed the steps in the class guide. The section in AWS to create a DDBB is RDS. There, the user can create a database clicking in the big orange button with just a few adjustments in the parameters. 
+The main ones were:
+- Changing the Engine options to **MySQL**.
+- Changing the Templates to the free one.
+- Optional: You can change the name in DB instance identifier.
+- Change in the username and creation of the password.
+- Optional: In the "Assign Storage" option, you can change the capacity.
 
+After waiting a few minutes to let the service create our database, we will need to change one thing to allow connectivity with our machine. We click in our DDBB and head into **Security>Entry Rules** to create a new line with IPv4 that allows any traffic with origin (0.0.0.0/0).  
+![IPv4](/media/IPv4.png)  
+After that, we are all set up to use our DDBB.
 # flask
 
 # DB

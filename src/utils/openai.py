@@ -13,6 +13,7 @@ PROMPT_ENGINEERING = '''
         - If the prompt doesn't contain any question or request, just mention that and provide a relevant response.
         - Don't provide an answer for something you weren't asked.
         - Act as if it's a conversation between two people.
+        - You must not specify you are giving an 'Answer: '.
 '''
 
 # Openai key
